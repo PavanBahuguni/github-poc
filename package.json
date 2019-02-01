@@ -1,0 +1,19 @@
+{
+  "name": "demo-express-gql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4",
+    "merge-graphql-schemas": "^1.5.8",
+    "schemaglue": "^4.0.2"
+  }
+}
