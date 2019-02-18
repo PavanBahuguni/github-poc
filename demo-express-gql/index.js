@@ -2,6 +2,7 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const app = new express();
 const { buildSchema } = require('graphql');
+
 /**
  * This is for object schema.
  */
@@ -17,11 +18,14 @@ const { buildSchema } = require('graphql');
 const typeDefs = require('./schema-string');
 const schema = buildSchema(typeDefs);
 const resolvers = require('./resolvers-string');
-console.log(resolvers);
+
+
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: resolvers,
   graphiql: true,
 }));
 
-app.listen(4000);
+app.listen(4000, () => {
+  console.log(`Server running on port 4000`);
+});

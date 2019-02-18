@@ -11,8 +11,7 @@ class UserService {
   }
 
   getUser({id}) {
-    const data = userModel.find(id);
-    return data;
+    return userModel.find(id);
   }
 
   getUsers() {
