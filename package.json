@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "express-gql": "node demo-express-gql",
+    "apollo": "node apollo-gql"
   },
   "author": "",
   "license": "ISC",

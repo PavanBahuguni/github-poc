@@ -15,8 +15,7 @@ const typeDefs = gql`
   }`;
 
 const resolvers = require('./resolvers');
-console.log(typeDefs);
-console.log(resolvers);
+
 const server = new ApolloServer({ typeDefs, resolvers});
 const app = express();
 server.applyMiddleware({ app });
