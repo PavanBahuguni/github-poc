@@ -1,11 +1,17 @@
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList } = require('graphql');
-const { userService } = require('../../../common/service');
+const { userService } = require('../../common/service');
 
 const userType = new GraphQLObjectType({
   name: 'User',
   fields: {
-    id: { type: GraphQLID },
-    name: { type: GraphQLString }
+    id: { 
+      type: GraphQLID,
+      description: "From schema object: id of the user"
+    },
+    name: { 
+      type: GraphQLString,
+      description: "From schema object: name of the user"
+    }
   }
 })
 

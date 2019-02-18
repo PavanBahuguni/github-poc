@@ -1,5 +1,7 @@
 type User {
+  "From schema string: id of the user"
   id: ID
+  "From schema string: name of the user."
   name: String
 }
 

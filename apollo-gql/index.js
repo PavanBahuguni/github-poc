@@ -10,7 +10,9 @@ const typeDefs = gql`
     createUser(name: String): User
   }
   type User {
+    "id of the user."
     id: ID
+    "# name of the user."
     name: String
   }`;
 
