@@ -1,24 +1,14 @@
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
-
-const typeDefs = gql`
-  type Query {
-    getUsers: [User]
-    getUser(id: ID): User
-  }
-  type Mutation {
-    createUser(name: String): User
-  }
-  type User {
-    "id of the user."
-    id: ID
-    "# name of the user."
-    name: String
-  }`;
+const typeDefs = require('./schema');
 
 const resolvers = require('./resolvers');
 
-const server = new ApolloServer({ typeDefs, resolvers});
+const server = new ApolloServer({ 
+  typeDefs, 
+  resolvers
+});
+
 const app = express();
 server.applyMiddleware({ app });
 

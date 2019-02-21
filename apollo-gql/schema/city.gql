@@ -1,0 +1,6 @@
+type City {
+  id: Int
+  name: String
+  country: String
+  population: Int
+}

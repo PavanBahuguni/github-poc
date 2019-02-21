@@ -1,0 +1,17 @@
+type User {
+  "id of the user."
+  id: Int
+  "name of the user."
+  name: String
+  "city information of the user"
+  city: City
+}
+
+type Query {
+  getUser(id: Int): User
+  getUsers: [User]
+}
+
+type Mutation {
+  createUser(name: String): User
+}

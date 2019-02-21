@@ -1,4 +1,4 @@
-const { userService } = require('../../common/service');
+const { userService, cityService } = require('../../common/service');
 
 class UserResolver {
   getUsers() {
@@ -22,5 +22,10 @@ module.exports = {
   },
   Mutation: {
     createUser: userResolver.createUser,
+  },
+  User: {
+    city: (root) => {
+      return cityService.getCity(root);
+    }
   }
 }
