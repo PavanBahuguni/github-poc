@@ -1,5 +1,7 @@
 const { GraphQLObjectType, GraphQLSchema } = require('graphql');
 const { userQuery, userMutation } = require('./user');
+const { User } = require('./city');
+console.log(User);
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -8,12 +10,12 @@ const schema = new GraphQLSchema({
       ...userQuery,
     }
   }),
-  mutations: new GraphQLObjectType({
+  mutation: new GraphQLObjectType({
     name: 'Mutation',
     fields: {
-      ...userQuery,
+      ...userMutation,
     }
-  })
+  }),
 });
 
 module.exports = schema;

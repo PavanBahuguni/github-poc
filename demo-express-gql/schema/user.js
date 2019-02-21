@@ -1,19 +1,27 @@
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList } = require('graphql');
-const { userService } = require('../../common/service');
+const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLList } = require('graphql');
+const { userService, cityService } = require('../../common/service');
+const { cityType } = require('./city');
 
 const userType = new GraphQLObjectType({
   name: 'User',
   fields: {
     id: { 
-      type: GraphQLID,
+      type: GraphQLInt,
       description: "From schema object: id of the user"
     },
     name: { 
       type: GraphQLString,
       description: "From schema object: name of the user"
+    },
+    city: {
+      type: cityType,
+      description: "From schema object: City information of the user.",
+      resolve: (root, args) => {
+        return cityService.getCity(root);
+      }
     }
   }
-})
+});
 
 const queryType = {
   getUsers: {
@@ -25,12 +33,12 @@ const queryType = {
   getUser: {
     type: userType,
     args: {
-      id: { type: GraphQLID }
+      id: { type: GraphQLInt }
     },
-    resolve: (ctx, args) => {
+    resolve: (root, args) => {
       return userService.getUser(args);
     }
-  }
+  },
 };
 
 const mutationType = {
@@ -39,7 +47,7 @@ const mutationType = {
     args: {
       name: { type: GraphQLString }
     },
-    resolve: (ctx, args) => {
+    resolve: (root, args) => {
       return userService.createUser(args);
     },
   }
