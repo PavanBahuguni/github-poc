@@ -1,15 +1,17 @@
 class UserModel {
   constructor() {
     this.users = [{
-      id: "1",
-      name: "Pavan"
+      id: 1,
+      name: "Pavan",
+      cityId: 1
     }];
   }
 
-  create({name}) {
+  create({name, cityId}) {
     const user = {
-      id: `${this.users.length + 1}`,
-      name
+      id: this.users.length + 1,
+      name,
+      cityId
     };
     this.users.push(user);
     return user;

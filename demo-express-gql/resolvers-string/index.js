@@ -1,8 +1,12 @@
 const userResolver = require('./user');
+const cityResolver = require('./city');
+
 const { mergeResolvers } = require('merge-graphql-schemas');
 
 const resolvers = [
   userResolver,
+  cityResolver,
 ];
 
-module.exports = mergeResolvers(resolvers);
+data = mergeResolvers(resolvers);
+module.exports = data;

@@ -1,17 +1,18 @@
 const { userService } = require('../../common/service');
 
-class UserResolver {
-  getUsers() {
-    return userService.getUsers();
+module.exports = {
+  Query: {
+    getUsers: () => {
+      return userService.getUsers();
+    },
+    getUser: (root, args) => {
+      console.log(root, args);
+      return userService.getUser(args);
+    },
+  },
+  Mutation: {
+    createUser: (root, args) => {
+      return userService.createUser(args);
+    }
   }
-
-  getUser(args) {
-    return userService.getUser(args);
-  }
-
-  createUser(args) {
-    return userService.createUser(args);
-  }
-}
-
-module.exports = new UserResolver();
+};

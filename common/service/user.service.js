@@ -1,4 +1,4 @@
-const { userModel } = require('../model');
+const { userModel, cityModel } = require('../model');
 
 class UserService {
   constructor(id, name) {
@@ -7,10 +7,16 @@ class UserService {
   }
 
   createUser(user) {
-    return userModel.create(user);
+    const { cities } = cityModel;
+    const newUser = {
+      ...user,
+      cityId: Math.floor(Math.random() * cities.length),
+    };
+    userModel.create(newUser);
+    return newUser;
   }
 
-  getUser({id}) {
+  getUser({ id }) {
     return userModel.find(id);
   }
 

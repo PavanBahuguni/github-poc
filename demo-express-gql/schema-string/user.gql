@@ -1,15 +1,20 @@
 type User {
   "From schema string: id of the user"
-  id: ID
+  id: Int
   "From schema string: name of the user."
   name: String
+  "city information of the user"
+  city: City
 }
 
 type Query {
+  "Query to get all the users"
   getUsers: [User]
-  getUser(id: ID): User
+  "Query to get user by id"
+  getUser(id: Int): User
 }
 
 type Mutation {
+  "Mutation to create a new user"
   createUser(name: String): User
 }

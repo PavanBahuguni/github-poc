@@ -1,7 +1,7 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const app = new express();
-const { buildSchema } = require('graphql');
+const { makeExecutableSchema } = require('graphql-tools')
 
 var args = process.argv.slice(2);
 
@@ -20,12 +20,15 @@ if(args[0] === 'object') {
   * Using string queries
   */
   const typeDefs = require('./schema-string');
-  const schema = buildSchema(typeDefs);
   const resolvers = require('./resolvers-string');
+
+  const schema = makeExecutableSchema({ 
+    typeDefs,
+    resolvers
+  });
 
   app.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: resolvers,
     graphiql: true,
   }));
 }
